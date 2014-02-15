@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WordPressWP8.Resources;
+using System.Windows.Navigation;
 
 namespace WordPressWP8
 {
@@ -100,6 +101,23 @@ namespace WordPressWP8
                 Debugger.Break();
             }
         }
+
+
+        private void InitializeUriMapper()
+        {
+            UriMapper mapper = Resources["UriMapper"] as UriMapper;
+            RootFrame.UriMapper = mapper;
+
+            if (true)
+            {
+                mapper.UriMappings[0].MappedUri = new Uri("/LocateBlogPage.xaml", UriKind.Relative);
+            }
+            else
+            {
+                mapper.UriMappings[0].MappedUri = new Uri("/BlogsPage.xaml", UriKind.Relative);
+            }
+        }
+
 
         #region Phone application initialization
 
