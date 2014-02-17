@@ -16,5 +16,21 @@ namespace WordPressWP8
         {
             InitializeComponent();
         }
+
+        private void OnCreateNewBlogButtonClick(object sender, RoutedEventArgs e)
+        {
+            LaunchWebBrowserCommand command = new LaunchWebBrowserCommand();
+            command.Execute(Constants.WORDPRESS_SIGNUP_URL);
+        }
+
+        private void OnExistingWPBlogButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddExistingWordPressBlogPage.xaml", UriKind.Relative));
+        }
+        
+        private void OnExistingWPSiteButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddExistingWordPressSitePage.xaml", UriKind.Relative));
+        }
     }
 }

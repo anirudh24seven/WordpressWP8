@@ -1,4 +1,5 @@
 ﻿<phone:PhoneApplicationPage
+    x:Name="phoneApplicationPage"
     x:Class="WordPressWP8.LocateBlogPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,9 +13,9 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
-
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -29,6 +30,14 @@
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="668" Margin="0,50,0,25" Grid.RowSpan="2" Width="454">
                 <Image Height="300" Margin="0" Source="Images/blue-xl.png" Width="300"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=ControlsText.StartBloggingInSeconds, Source={StaticResource StringTable}}" Width="361" FontSize="32" TextAlignment="Center" Margin="0,10,0,20" FontFamily="Georgia" >
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource WordPressGrey}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <Button x:Name="createNewBlogButton" Content="{Binding ControlsText.StartNewBlog, Source={StaticResource StringTable}}" Click="OnCreateNewBlogButtonClick" Style="{StaticResource BasicButtonStyle}" FontSize="21.333" VerticalAlignment="Center"/>
+                <Button x:Name="existingWPBlogButton" Content="{Binding ControlsText.AddExistingWPBlog, Source={StaticResource StringTable}}" Click="OnExistingWPBlogButtonClick" Style="{StaticResource BasicButtonStyle}" FontSize="21.333"/>
+                <Button x:Name="existingWPSiteButton" Content="{Binding ControlsText.AddExistingWPSite, Source={StaticResource StringTable}}" Click="OnExistingWPSiteButtonClick" Style="{StaticResource BasicButtonStyle}" FontSize="21.333"/>
             </StackPanel>
         </Grid>
     </Grid>

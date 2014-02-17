@@ -93,6 +93,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Localization\LocalizedResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\StringTable.cs" />
     <Compile Include="LocateBlogPage.xaml.cs">
       <DependentUpon>LocateBlogPage.xaml</DependentUpon>
     </Compile>
@@ -139,8 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\LocalizedResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
