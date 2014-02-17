@@ -6,8 +6,8 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using WordPressWP8.Resources;
 using System.Windows.Navigation;
+using System.Globalization;
 
 namespace WordPressWP8
 {
@@ -32,9 +32,6 @@ namespace WordPressWP8
 
             // Phone-specific initialization
             InitializePhoneApplication();
-
-            // Language display initialization
-            InitializeLanguage();
 
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
@@ -62,12 +59,14 @@ namespace WordPressWP8
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            InitializeUriMapper();
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            InitializeUriMapper();
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -211,7 +210,7 @@ namespace WordPressWP8
                 //
                 // If a compiler error is hit then ResourceLanguage is missing from
                 // the resource file.
-                RootFrame.Language = XmlLanguage.GetLanguage(AppResources.ResourceLanguage);
+                RootFrame.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.Name);
 
                 // Set the FlowDirection of all elements under the root frame based
                 // on the ResourceFlowDirection resource string for each
@@ -219,8 +218,8 @@ namespace WordPressWP8
                 //
                 // If a compiler error is hit then ResourceFlowDirection is missing from
                 // the resource file.
-                FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
-                RootFrame.FlowDirection = flow;
+                //FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
+                //RootFrame.FlowDirection = flow;
             }
             catch
             {

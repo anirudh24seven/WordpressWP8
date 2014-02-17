@@ -8,7 +8,6 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <local:LocalizedStrings xmlns:local="clr-namespace:WordPressWP8" x:Key="LocalizedStrings"/>
         <ResourceDictionary x:Key="Resources">
             <UriMapper:UriMapper x:Key="UriMapper">
                 <UriMapper:UriMapping Uri="/StartPage"/>
